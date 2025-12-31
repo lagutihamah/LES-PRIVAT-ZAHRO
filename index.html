@@ -5,147 +5,19 @@
 <title>LES PRIVATE ZAHRO</title>
 
 <style>
-body{
-font-family:Arial;
-margin:0;
-background:#f4f6f8;
-}
-
-/* HEADER & NAV */
-header{
-background:#2c7be5;
-color:white;
-padding:20px;
-text-align:center
-}
-nav{
-background:#1f5fbf;
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap
-}
-nav button{
-background:none;
-border:none;
-color:white;
-padding:14px 18px;
-font-weight:bold;
-cursor:pointer
-}
-nav button:hover{
-background:#174ea6
-}
-
-/* SECTION */
-section{
-display:none;
-padding:30px;
-min-height:100vh;
-position:relative;
-}
+body{font-family:Arial;margin:0;background:#f4f6f8}
+header{background:#2c7be5;color:white;padding:20px;text-align:center}
+nav{background:#1f5fbf;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+nav button{background:none;border:none;color:white;padding:14px 18px;font-weight:bold;cursor:pointer}
+nav button:hover{background:#174ea6}
+section{display:none;padding:30px;min-height:100vh}
 section.active{display:block}
-
-/* BACKGROUND BESAR */
-#mapel,#jadwal,#siswa,#login{
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
-}
-
-/* GAMBAR */
-#mapel{background-image:url("11.png")}
-#jadwal{background-image:url("11.png")}
-#siswa{background-image:url("11.png")}
-#login{background-image:url("11.png")}
-
-/* OVERLAY */
-#mapel::before,
-#jadwal::before,
-#siswa::before,
-#login::before{
-content:"";
-position:absolute;
-top:0;left:0;right:0;bottom:0;
-background:rgba(255,255,255,0);
-z-index:0;
-}
-
-/* KONTEN */
-section>*{
-position:relative;
-z-index:1;
-}
-
-/* GALLERY */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:12px;
-margin-top:15px
-}
-.gallery img{
-width:100%;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.3)
-}
-
-/* VIDEO */
-video{
-width:100%;
-max-width:600px;
-border-radius:12px;
-margin-top:15px;
-box-shadow:0 4px 12px rgba(0,0,0,0.3)
-}
-
-/* TABLE */
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-margin-top:10px;
-border-radius:10px;
-overflow:hidden
-}
-th,td{
-border:1px solid #ddd;
-padding:10px;
-text-align:center
-}
-th{
-background:#2c7be5;
-color:white
-}
-
-/* ADMIN BOX */
-.admin{
-background:white;
-padding:15px;
-margin-top:15px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.25)
-}
+table{width:100%;border-collapse:collapse;background:white}
+th,td{border:1px solid #ddd;padding:10px;text-align:center}
+th{background:#2c7be5;color:white}
+.admin{background:white;padding:15px;margin-top:15px;border-radius:10px}
 .hidden{display:none}
-
-a.mapel-link{
-font-weight:bold;
-color:#2c7be5;
-text-decoration:none
-}
-
-footer{
-text-align:center;
-background:#2c7be5;
-color:white;
-padding:12px
-}
-
-@media(max-width:600px){
-nav button{padding:10px;font-size:14px}
-header h1{font-size:22px}
-}
+footer{text-align:center;background:#2c7be5;color:white;padding:12px}
 </style>
 </head>
 
@@ -165,28 +37,8 @@ header h1{font-size:22px}
 </nav>
 
 <section id="home" class="active">
-<h2>📸 Kegiatan Belajar</h2>
-<div class="gallery">
-<img src="1.jpg">
-<img src="2.jpg">
-<img src="3.jpg">
-</div>
-<div class="gallery">
-<img src="1.jpg">
-<img src="2.jpg">
-<img src="3.jpg">
-</div>
-
-<h2>🎥 Video Profil</h2>
-<video controls>
-<source src="HUTAN.mp4" type="video/mp4">
-</video>
-<video controls>
-<source src="HUTAN.mp4" type="video/mp4">
-</video>
-<video controls>
-<source src="HUTAN.mp4" type="video/mp4">
-</video>
+<h2>Selamat Datang di LES PRIVATE ZAHRO</h2>
+<p>Website manajemen data siswa & jadwal.</p>
 </section>
 
 <section id="login">
@@ -200,33 +52,25 @@ header h1{font-size:22px}
 <section id="mapel">
 <h2>Mata Pelajaran</h2>
 <ul id="mapelList"></ul>
-
 <div class="admin hidden">
 <input id="newMapel" placeholder="Nama Mapel">
 <input id="mapelLink" placeholder="Link Materi">
-<button onclick="addMapel()">Tambah / Simpan</button>
+<button onclick="addMapel()">Simpan</button>
 </div>
 </section>
 
 <section id="jadwal">
 <h2>Jadwal Les</h2>
 <table>
-<tr>
-<th>Hari</th>
-<th>Jam</th>
-<th>Mapel</th>
-<th>Nama Siswa</th>
-<th>Aksi</th>
-</tr>
+<tr><th>Hari</th><th>Jam</th><th>Mapel</th><th>Siswa</th><th>Aksi</th></tr>
 <tbody id="jadwalList"></tbody>
 </table>
-
 <div class="admin hidden">
 <input id="hari" placeholder="Hari">
 <input id="jam" placeholder="Jam">
 <input id="mapelJadwal" placeholder="Mapel">
 <input id="namaSiswaJadwal" placeholder="Nama Siswa">
-<button onclick="addJadwal()">Tambah / Simpan</button>
+<button onclick="addJadwal()">Simpan</button>
 </div>
 </section>
 
@@ -236,25 +80,46 @@ header h1{font-size:22px}
 <tr><th>Nama</th><th>Kelas</th><th>Aksi</th></tr>
 <tbody id="siswaList"></tbody>
 </table>
-
 <div class="admin hidden">
 <input id="namaSiswa" placeholder="Nama">
 <input id="kelasSiswa" placeholder="Kelas">
-<button onclick="addSiswa()">Tambah / Simpan</button>
+<button onclick="addSiswa()">Simpan</button>
 </div>
 </section>
 
 <footer>© 2025 LES PRIVATE ZAHRO</footer>
 
-<script>
-let isAdmin=false;
-let editMapelIndex=null;
-let editJadwalIndex=null;
-let editSiswaIndex=null;
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-const mapel=JSON.parse(localStorage.getItem("mapel"))||[];
-const jadwal=JSON.parse(localStorage.getItem("jadwal"))||[];
-const siswa=JSON.parse(localStorage.getItem("siswa"))||[];
+<script>
+/* 🔴 GANTI DENGAN DATA FIREBASE KAK */
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDpbztaOesOsI1t2URnicZ4IbzXSWe4rvk",
+  authDomain: "les-private-zahro.firebaseapp.com",
+  projectId: "les-private-zahro",
+  storageBucket: "les-private-zahro.firebasestorage.app",
+  messagingSenderId: "41777740392",
+  appId: "1:41777740392:web:92bb4a8a52becb2b97d9dd",
+  measurementId: "G-QH54RS825W"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+let isAdmin=false;
 
 function show(id){
 document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
@@ -266,105 +131,84 @@ if(user.value==="yayanpusfito" && pass.value==="123456"){
 isAdmin=true;
 loginMsg.innerHTML="✅ Login berhasil";
 document.querySelectorAll(".admin").forEach(a=>a.classList.remove("hidden"));
-render();
 }else{
 loginMsg.innerHTML="❌ Login gagal";
 }
 }
 
-function render(){
-mapelList.innerHTML=mapel.map((m,i)=>`
-<li>
-<a class="mapel-link" href="${m.link}" target="_blank">${m.nama}</a>
-${isAdmin?` <button onclick="editMapel(${i})">✏️</button>
-<button onclick="delMapel(${i})">❌</button>`:""}
-</li>`).join("");
+/* ===== SISWA ===== */
+function addSiswa(){
+db.ref("siswa").push({
+nama:namaSiswa.value,
+kelas:kelasSiswa.value
+});
+namaSiswa.value="";
+kelasSiswa.value="";
+}
 
-jadwalList.innerHTML=jadwal.map((j,i)=>`
+db.ref("siswa").on("value",snap=>{
+siswaList.innerHTML="";
+snap.forEach(d=>{
+siswaList.innerHTML+=`
+<tr>
+<td>${d.val().nama}</td>
+<td>${d.val().kelas}</td>
+<td>${isAdmin?`<button onclick="del('siswa','${d.key}')">❌</button>`:""}</td>
+</tr>`;
+});
+});
+
+/* ===== MAPEL ===== */
+function addMapel(){
+db.ref("mapel").push({
+nama:newMapel.value,
+link:mapelLink.value
+});
+newMapel.value="";
+mapelLink.value="";
+}
+
+db.ref("mapel").on("value",snap=>{
+mapelList.innerHTML="";
+snap.forEach(d=>{
+mapelList.innerHTML+=`
+<li>
+<a href="${d.val().link}" target="_blank">${d.val().nama}</a>
+${isAdmin?`<button onclick="del('mapel','${d.key}')">❌</button>`:""}
+</li>`;
+});
+});
+
+/* ===== JADWAL ===== */
+function addJadwal(){
+db.ref("jadwal").push({
+hari:hari.value,
+jam:jam.value,
+mapel:mapelJadwal.value,
+siswa:namaSiswaJadwal.value
+});
+hari.value=jam.value=mapelJadwal.value=namaSiswaJadwal.value="";
+}
+
+db.ref("jadwal").on("value",snap=>{
+jadwalList.innerHTML="";
+snap.forEach(d=>{
+let j=d.val();
+jadwalList.innerHTML+=`
 <tr>
 <td>${j.hari}</td>
 <td>${j.jam}</td>
 <td>${j.mapel}</td>
 <td>${j.siswa}</td>
-<td>
-${isAdmin?`<button onclick="editJadwal(${i})">✏️</button>
-<button onclick="delJadwal(${i})">❌</button>`:""}
-</td>
-</tr>`).join("");
+<td>${isAdmin?`<button onclick="del('jadwal','${d.key}')">❌</button>`:""}</td>
+</tr>`;
+});
+});
 
-siswaList.innerHTML=siswa.map((s,i)=>`
-<tr>
-<td>${s.nama}</td>
-<td>${s.kelas}</td>
-<td>
-${isAdmin?`<button onclick="editSiswa(${i})">✏️</button>
-<button onclick="delSiswa(${i})">❌</button>`:""}
-</td>
-</tr>`).join("");
-
-localStorage.setItem("mapel",JSON.stringify(mapel));
-localStorage.setItem("jadwal",JSON.stringify(jadwal));
-localStorage.setItem("siswa",JSON.stringify(siswa));
+/* HAPUS */
+function del(path,id){
+db.ref(path+"/"+id).remove();
 }
-
-function addMapel(){
-if(editMapelIndex===null){
-mapel.push({nama:newMapel.value,link:mapelLink.value});
-}else{
-mapel[editMapelIndex]={nama:newMapel.value,link:mapelLink.value};
-editMapelIndex=null;
-}
-newMapel.value="";
-mapelLink.value="";
-render();
-}
-function editMapel(i){
-newMapel.value=mapel[i].nama;
-mapelLink.value=mapel[i].link;
-editMapelIndex=i;
-}
-function delMapel(i){mapel.splice(i,1);render();}
-
-function addJadwal(){
-const data={hari:hari.value,jam:jam.value,mapel:mapelJadwal.value,siswa:namaSiswaJadwal.value};
-if(editJadwalIndex===null){
-jadwal.push(data);
-}else{
-jadwal[editJadwalIndex]=data;
-editJadwalIndex=null;
-}
-hari.value=jam.value=mapelJadwal.value=namaSiswaJadwal.value="";
-render();
-}
-function editJadwal(i){
-hari.value=jadwal[i].hari;
-jam.value=jadwal[i].jam;
-mapelJadwal.value=jadwal[i].mapel;
-namaSiswaJadwal.value=jadwal[i].siswa;
-editJadwalIndex=i;
-}
-function delJadwal(i){jadwal.splice(i,1);render();}
-
-function addSiswa(){
-const data={nama:namaSiswa.value,kelas:kelasSiswa.value};
-if(editSiswaIndex===null){
-siswa.push(data);
-}else{
-siswa[editSiswaIndex]=data;
-editSiswaIndex=null;
-}
-namaSiswa.value="";
-kelasSiswa.value="";
-render();
-}
-function editSiswa(i){
-namaSiswa.value=siswa[i].nama;
-kelasSiswa.value=siswa[i].kelas;
-editSiswaIndex=i;
-}
-function delSiswa(i){siswa.splice(i,1);render();}
-
-render();
 </script>
 
 </body>
